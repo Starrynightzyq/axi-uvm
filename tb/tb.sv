@@ -246,11 +246,18 @@ initial begin
 
 end
 
-initial begin
-  $dumpfile("dump.vcd");
-  //$dumpvars(0, dut.axi_write_decoder); //(1);
-  $dumpvars(1); //(1);
+// dump wave for modesim
+// initial begin
+  // $dumpfile("dump.vcd");
+  // //$dumpvars(0, dut.axi_write_decoder); //(1);
+  // $dumpvars(1); //(1);
+// end
 
+// dump wave for VCS
+initial begin
+    $fsdbDumpfile("dump.fsdb");
+    $fsdbDumpvars(0);
+    $fsdbDumpon;
 end
 
 endmodule : tb

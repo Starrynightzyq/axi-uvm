@@ -48,7 +48,7 @@ if not os.access(args.template, os.R_OK):
 
 if not os.path.exists(args.outputdir):
   print("director %s does not exist. Creating"%args.outputdir)
-  os.mkdir( args.outputdir, 0755 );
+  os.mkdir( args.outputdir, 0o755 );
 
 if not os.path.isdir(args.outputdir):
   print("'%s' isn't a directory." % args.outputdir)
