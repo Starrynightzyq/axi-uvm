@@ -109,8 +109,7 @@ module tb;
   wire                            wb_ack;
   wire                            wb_stall;
   wire                            wb_err;
-  int transactions;
-
+  int transactions;                    
 
   /*! Driver instantiation */
   axi_if #(.C_AXI_ID_WIDTH      (C_AXI_ID_WIDTH),
@@ -212,12 +211,114 @@ module tb;
                .rready(axi_rready)
              );
 
+//     DMATopAXI_AXIL_AXI dut(
+//     .clock                 ( clk                   ),
+//     .reset                 ( reset                 ),
+//     .io_control_aw_awaddr  (                       ),
+//     .io_control_aw_awprot  (                       ),
+//     .io_control_aw_awvalid (                       ),
+//     .io_control_aw_awready (                       ),
+//     .io_control_w_wdata    (                       ),
+//     .io_control_w_wstrb    (                       ),
+//     .io_control_w_wvalid   (                       ),
+//     .io_control_w_wready   (                       ),
+//     .io_control_b_bresp    (                       ),
+//     .io_control_b_bvalid   (                       ),
+//     .io_control_b_bready   (                       ),
+//     .io_control_ar_araddr  (                       ),
+//     .io_control_ar_arprot  (                       ),
+//     .io_control_ar_arvalid (                       ),
+//     .io_control_ar_arready (                       ),
+//     .io_control_r_rdata    (                       ),
+//     .io_control_r_rresp    (                       ),
+//     .io_control_r_rvalid   (                       ),
+//     .io_control_r_rready   (                       ),
+//     .io_read_aw_awid       (                       ),
+//     .io_read_aw_awaddr     (                       ),
+//     .io_read_aw_awlen      (                       ),
+//     .io_read_aw_awsize     (                       ),
+//     .io_read_aw_awburst    (                       ),
+//     .io_read_aw_awlock     (                       ),
+//     .io_read_aw_awcache    (                       ),
+//     .io_read_aw_awprot     (                       ),
+//     .io_read_aw_awqos      (                       ),
+//     .io_read_aw_awvalid    (                       ),
+//     .io_read_aw_awready    (                       ),
+//     .io_read_w_wdata       (                       ),
+//     .io_read_w_wstrb       (                       ),
+//     .io_read_w_wlast       (                       ),
+//     .io_read_w_wvalid      (                       ),
+//     .io_read_w_wready      (                       ),
+//     .io_read_b_bid         (                       ),
+//     .io_read_b_bresp       (                       ),
+//     .io_read_b_bvalid      (                       ),
+//     .io_read_b_bready      (                       ),
+//     .io_read_ar_arid       (                       ),
+//     .io_read_ar_araddr     (                       ),
+//     .io_read_ar_arlen      (                       ),
+//     .io_read_ar_arsize     (                       ),
+//     .io_read_ar_arburst    (                       ),
+//     .io_read_ar_arlock     (                       ),
+//     .io_read_ar_arcache    (                       ),
+//     .io_read_ar_arprot     (                       ),
+//     .io_read_ar_arqos      (                       ),
+//     .io_read_ar_arvalid    (                       ),
+//     .io_read_ar_arready    (                       ),
+//     .io_read_r_rid         (                       ),
+//     .io_read_r_rdata       (                       ),
+//     .io_read_r_rresp       (                       ),
+//     .io_read_r_rlast       (                       ),
+//     .io_read_r_rvalid      (                       ),
+//     .io_read_r_rready      (                       ),
+//     .io_write_aw_awid      ( axi_awid              ),
+//     .io_write_aw_awaddr    ( axi_awaddr            ),
+//     .io_write_aw_awlen     ( axi_awlen             ),
+//     .io_write_aw_awsize    ( axi_awsize            ),
+//     .io_write_aw_awburst   ( axi_awburst           ),
+//     .io_write_aw_awlock    ( axi_awlock            ),
+//     .io_write_aw_awcache   ( axi_awcache           ),
+//     .io_write_aw_awprot    ( axi_awprot            ),
+//     .io_write_aw_awqos     ( axi_awqos             ),
+//     .io_write_aw_awvalid   ( axi_awvalid           ),
+//     .io_write_aw_awready   ( axi_awready           ),
+//     .io_write_w_wdata      ( axi_wdata             ),
+//     .io_write_w_wstrb      ( axi_wstrb             ),
+//     .io_write_w_wlast      ( axi_wlast             ),
+//     .io_write_w_wvalid     ( axi_wvalid            ),
+//     .io_write_w_wready     ( axi_wready            ),
+//     .io_write_b_bid        ( axi_bid               ),
+//     .io_write_b_bresp      ( axi_bresp             ),
+//     .io_write_b_bvalid     ( axi_bvalid            ),
+//     .io_write_b_bready     ( axi_bready            ),
+//     .io_write_ar_arid      ( axi_arid              ),
+//     .io_write_ar_araddr    ( axi_araddr            ),
+//     .io_write_ar_arlen     ( axi_arlen             ),
+//     .io_write_ar_arsize    ( axi_arsize            ),
+//     .io_write_ar_arburst   ( axi_arburst           ),
+//     .io_write_ar_arlock    ( axi_arlock            ),
+//     .io_write_ar_arcache   ( axi_arcache           ),
+//     .io_write_ar_arprot    ( axi_arprot            ),
+//     .io_write_ar_arqos     ( axi_arqos             ),
+//     .io_write_ar_arvalid   ( axi_arvalid           ),
+//     .io_write_ar_arready   ( axi_arready           ),
+//     .io_write_r_rid        ( axi_rid               ),
+//     .io_write_r_rdata      ( axi_rdata             ),
+//     .io_write_r_rresp      ( axi_rresp             ),
+//     .io_write_r_rlast      ( axi_rlast             ),
+//     .io_write_r_rvalid     ( axi_rvalid            ),
+//     .io_write_r_rready     ( axi_rready            ),
+//     .io_irq_readerDone     (                       ),
+//     .io_irq_writerDone     (                       ),
+//     .io_sync_readerSync    (                       ),
+//     .io_sync_writerSync    (                       )
+// );
+          
 
   // tbx clkgen
 initial begin
    clk = 0;
    forever begin
-      #10 clk = ~clk;
+      #(10/2) clk = ~clk;
    end
 end
 
@@ -256,7 +357,7 @@ end
 // dump wave for VCS
 initial begin
     $fsdbDumpfile("dump.fsdb");
-    $fsdbDumpvars(0);
+    $fsdbDumpvars();
     $fsdbDumpon;
 end
 

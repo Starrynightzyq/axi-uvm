@@ -43,7 +43,7 @@ package params_pkg;
 // different sizes?
   parameter AXI_ID_WIDTH   = 4;
   parameter AXI_ADDR_WIDTH = 32;
-  parameter AXI_DATA_WIDTH = 256;
+  parameter AXI_DATA_WIDTH = 32;
   parameter AXI_LEN_WIDTH  = 8;
 
 

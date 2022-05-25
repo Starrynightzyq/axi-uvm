@@ -29,7 +29,7 @@ TBFILES       = ../rtl/axi_uvm_pkg.sv ../tb/tb.sv
 transactions ?= 200
 #Set SEED=0 for stable/consistent runs like pre-commit checks
 SEED ?=random
-UVM_TESTNAME ?= axi_base_test
+UVM_TESTNAME ?= axi_pipelined_reads_test
 LOG_DIR      = logs
 PARAMS_PKGS_DIR = params_pkgs
 PARAMS_PKGS_TEMPLATE = params_pkg.sv_TMPL
@@ -56,14 +56,14 @@ params_pkgs:
 comp:
 	$(VCS) +incdir+`pwd`/../tb \
 		+incdir+`pwd`/../rtl \
-		$(PARAMSFILE) $(RTLFILES) $(TBFILES)
+		$(PARAMSFILE) $(RTLFILES) $(TBFILES) \
+		../rtl/DMATopAXI_AXIL_AXI.v
 
 sim: $(COVERAGE_DIR) $(LOG_DIR)
 	$(SIMV) +UVM_TESTNAME=$(UVM_TESTNAME) \
 	   -l $(LOG_DIR)/$(UVM_TESTNAME)_$(PARAMS_STRING).log \
 	   +transactions=$(transactions) \
-	   -sv_seed $(SEED) \
-	   run 20ps
+	   -sv_seed $(SEED)
 
 run: sim
 	@echo "Checking logs for UVM errors"
